@@ -106,8 +106,8 @@ export function ProcessingScreen() {
   const isComplete = completedSteps.length === reviewSteps.length;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6">
-      <div className="w-full max-w-2xl space-y-8">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-6 sm:p-6">
+      <div className="w-full max-w-2xl space-y-5 sm:space-y-8">
         <ProcessingHeader 
           isComplete={isComplete}
           remainingMinutes={remainingMinutes}
@@ -116,7 +116,7 @@ export function ProcessingScreen() {
 
         <ProgressIndicator progress={overallProgress} />
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {reviewSteps.map((step, index) => {
             const isActive = index === currentStepIndex && !isComplete;
             const isCompleted = completedSteps.includes(step.id);
@@ -137,16 +137,16 @@ export function ProcessingScreen() {
         </div>
 
         {!isComplete && (
-          <p className="text-center text-sm text-muted-foreground animate-fade-in-up">
+          <p className="text-center text-xs sm:text-sm text-muted-foreground animate-fade-in-up px-2">
             Please don't close this window. Your assessment is being carefully reviewed.
           </p>
         )}
 
         {isComplete && (
           <div className="text-center animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-success/10 text-success px-6 py-3 rounded-full">
-              <Check className="w-5 h-5" />
-              <span className="font-medium">Assessment Complete!</span>
+            <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 sm:px-6 py-2 sm:py-3 rounded-full">
+              <Check className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-medium text-sm sm:text-base">Assessment Complete!</span>
             </div>
           </div>
         )}
