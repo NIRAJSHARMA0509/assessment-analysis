@@ -46,7 +46,7 @@ export function AgentCard({
   return (
     <div
       className={cn(
-        "relative bg-card rounded-xl border overflow-hidden transition-all duration-500",
+        "relative bg-card rounded-lg sm:rounded-xl border overflow-hidden transition-all duration-500",
         isActive && `border-2 ${borderColorMap[step.color]} shadow-card-elevated`,
         isCompleted && "border-success/30 bg-success/5",
         isPending && "opacity-60 border-border"
@@ -61,11 +61,11 @@ export function AgentCard({
         />
       )}
 
-      <div className="relative flex items-center gap-4 p-4">
+      <div className="relative flex items-center gap-3 sm:gap-4 p-3 sm:p-4">
         {/* Agent avatar */}
         <div
           className={cn(
-            "relative flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300",
+            "relative flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300",
             isActive && colorMap[step.color],
             isCompleted && "bg-success",
             isPending && "bg-muted"
@@ -77,12 +77,12 @@ export function AgentCard({
           )}
           
           {isCompleted ? (
-            <Check className="w-6 h-6 text-success-foreground" />
+            <Check className="w-5 h-5 sm:w-6 sm:h-6 text-success-foreground" />
           ) : isActive ? (
-            <Loader2 className="w-6 h-6 text-primary-foreground animate-spin" />
+            <Loader2 className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground animate-spin" />
           ) : (
             <div className={cn(
-              "w-3 h-3 rounded-full",
+              "w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full",
               isPending ? "bg-muted-foreground/30" : colorMap[step.color]
             )} />
           )}
@@ -90,9 +90,9 @@ export function AgentCard({
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <h3 className={cn(
-              "font-medium transition-colors duration-300",
+              "text-sm sm:text-base font-medium transition-colors duration-300",
               isActive && "text-foreground",
               isCompleted && "text-success",
               isPending && "text-muted-foreground"
@@ -100,13 +100,13 @@ export function AgentCard({
               {step.title}
             </h3>
             {isActive && (
-              <span className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded-full font-medium">
+              <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 bg-primary/10 text-primary rounded-full font-medium whitespace-nowrap">
                 {step.agentName}
               </span>
             )}
           </div>
           <p className={cn(
-            "text-sm transition-colors duration-300",
+            "text-xs sm:text-sm transition-colors duration-300 line-clamp-1",
             isCompleted ? "text-success/70" : "text-muted-foreground"
           )}>
             {isCompleted ? "Completed" : step.description}
@@ -116,7 +116,7 @@ export function AgentCard({
         {/* Progress percentage for active step */}
         {isActive && (
           <div className="flex-shrink-0">
-            <span className="text-sm font-semibold text-primary">
+            <span className="text-xs sm:text-sm font-semibold text-primary">
               {Math.round(progress)}%
             </span>
           </div>
@@ -125,7 +125,7 @@ export function AgentCard({
         {/* Checkmark for completed */}
         {isCompleted && (
           <div className="flex-shrink-0">
-            <svg className="w-6 h-6 text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M5 13l4 4L19 7" className="animate-check-mark" />
             </svg>
           </div>
